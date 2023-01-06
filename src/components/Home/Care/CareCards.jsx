@@ -7,7 +7,7 @@ const CareCards = (props) => {
             <img src={props.image} alt={props.alt} className="w-7 h-7 sm:w-9 sm:h-9"/>
         </div>
         <div>
-            <h2 className='inter inter-600'>{props.title}</h2>
+            <h2 className='inter inter-600 text-center md:text-left'>{props.title}</h2>
         </div>
     </div>
   )

@@ -22,7 +22,7 @@ const FlexImages = () => {
             </div>
         </div>
         <div className='flex py-4 lg:py-2 text-center justify-center lg:grid grid-cols-2 gap-x-4 lg:gap-x-0 lg:gap-y-0 gap-y-1 lg:place-items-center'>
-            <div className='w-fiftyPercent sm:w-auto row-start-4 row-end-6 col-start-1 col-end-1 h-fit flex justify-end items-end lg:translate-x-4'>
+            <div className='w-fiftyPercent sm:w-auto row-start-4 row-end-6 col-start-1 col-end-1 h-fit flex justify-end items-end xl:translate-x-4'>
                 <div className='w-fit relative'>
                     <img src={BathStuff} alt="bathstuff" className='max-h-60'/>
                     <h1 className='absolute top-10 w-full left-fiftyPercent -translate-x-fiftyPercent z-20'>Monthly House Cleaning</h1>
@@ -30,7 +30,7 @@ const FlexImages = () => {
             </div>
             <div className='w-fiftyPercent lg:w-auto flex row-start-4 col-start-2 col-end-2 row-end-7 items-end h-fit'>
                 <div className='w-fit relative'>
-                    <img src={Group} alt="group" className='h-full'/>
+                    <img src={Group} alt="group" className=''/>
                     <h1 className='absolute top-10 w-full left-fiftyPercent -translate-x-fiftyPercent z-20'>Choose Your Own Roommate</h1>
                 </div>
             </div>
