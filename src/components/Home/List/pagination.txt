@@ -1,0 +1,51 @@
+import {React, useState, useEffect} from 'react'
+
+function Pagination(props){
+    const [page, setPage] = useState(1)
+    let items = props.itemLength
+    let rows = props.rows
+    let pages = ''
+    let currentPage = props.currentPage
+    for (let i = 1; i < Math.ceil(items/rows)+1; i++) {
+        pages += `<button id="page${i}" class="text-red1x page-nav bg-white px-4 py-4">${i}</button>`
+    }
+
+    useEffect(() => {
+        document.getElementById('page_wrap').innerHTML = pages
+    }, [])
+     
+    useEffect(() => {
+        let pageBtns = document.querySelectorAll('.page-nav')
+        for (let i = 0; i < pageBtns.length; i++) {
+            if (currentPage == page) {
+                pageBtns[page-1].classList.add('active-page')
+            } 
+            pageBtns[i].addEventListener('click', function(){
+                for (let i = 0; i < pageBtns.length; i++) {
+                    pageBtns[i].classList.remove('active-page')
+                }
+                setPage(pageBtns[i].innerHTML)
+                currentPage = page
+                pageBtns[page-1].classList.add('active-page')
+                // spliceItems(list_items, wrapper, rows, currentPage)
+            })
+        }
+     }, [page])
+  return (
+    <div className='w-full flex items-center justify-center'>
+        <div className='flex flex-row items-center w-fit'>
+            <div>
+                <button type='button' id='first'>First</button>
+            </div>
+            <div id='page_wrap'>
+
+            </div>
+            <div>
+                <button type='button' id='next'>Next</button>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Pagination
