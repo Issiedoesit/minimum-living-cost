@@ -6,7 +6,7 @@ const CareCards = (props) => {
   const care = {
     hidden: { 
       opacity: 0,
-      x: -500
+      x: -50
      },
     show: { 
       opacity: 1,
