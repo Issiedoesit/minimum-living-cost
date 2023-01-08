@@ -65,7 +65,7 @@ const Review = () => {
   return (
     <main className='relative w-full bg-red1x/10 pb-10 xl:pb-0'>
        {/* {slideIndex} */}
-        <section className='flex flex-row w-full mx-auto xl:mx-0 overflow-x-hidden flex-nowrap h-fit' id='slide_wrap'>
+        <section className='flex flex-row w-full mx-auto xl:mx-0 overflow-x-hidden overflow-y-hidden flex-nowrap h-fit' id='slide_wrap'>
             {reviewDataSet}
         </section>
         <section className='px-10 lg:px-28 dot-wrap pt-10 lg:pt-0 lg:-translate-y-[300%] mx-auto lg:mx-0 w-fit h-fit flex flex-row items-center gap-4 lg:gap-3'>
