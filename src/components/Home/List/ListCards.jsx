@@ -5,7 +5,7 @@ import Size from './../../../assets/images/icons/list/Size.svg'
 
 const ListCards = (props) => {
   return (
-    <div key={props.id} id={props.id} className="dm shadow-lg rounded-26.62px max-w-md mx-auto">
+    <div key={props.id} id={props.id} className="dm shadow-lg rounded-26.62px max-w-md hover:scale-90 transition-transform ease-in-out duration-500 mx-auto">
       <div>
         <img src={props.img} alt="listing" />
         <section className='bg-white text-left rounded-b-26.62px pt-18px space-y-18px'>

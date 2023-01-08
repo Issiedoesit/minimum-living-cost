@@ -27,7 +27,7 @@ function Pagination({itemLength, rows, currentPage, paginate}){
     // }, [])
   return (
     <div className='w-full flex items-center mont-s mont-s-700 justify-center'>
-        <div className='flex flex-row rounded-eight divide-x divide-grey3x h-16 items-center w-fit border-2 border-grey3x'>
+        <div className='flex flex-row rounded-eight divide-x divide-grey3x h-12 sm:h-16 items-center w-fit border-2 border-grey3x'>
             <div className='h-full flex items-center rounded-l-eight'>
                 <button className='px-6 rounded-l-eight text-lightGrey4x hover:text-red1x/80 ease-in-out transition-colors duration-500' type='button' id='first' onClick={() => paginate(1)}>First</button>
             </div>

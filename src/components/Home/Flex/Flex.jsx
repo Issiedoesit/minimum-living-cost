@@ -14,7 +14,7 @@ const flex = () => {
                     <h1 className='inter-800 text-4xl'>Flexibility and options to suit your lifestyle.</h1>
                     <p className='inter-400'>You need it? We got it. We make finding your next home easy, comfortable, and simple. From our happiness guarantee to our selective roommate finder option. We provide you the flexibility that you most desire.</p>
                 </div>
-                <button type='button' id='showRooms' className='inter-600 text-white bg-red1x active:translate-y-4 hover:text-red1x hover:bg-white hover:shadow-xl py-5 px-7 rounded-fifteen transition-colors duration-500'>Search Rooms</button>
+                <button type='button' id='showRooms' className='inter-600 text-white bg-red1x active:translate-y-4 hover:border-0.5 hover:border-red1x hover:text-red1x hover:bg-white hover:shadow-xl py-5 px-7 rounded-fifteen transition-colors duration-500'>Search Rooms</button>
             </div>
         </section>
         <Form />

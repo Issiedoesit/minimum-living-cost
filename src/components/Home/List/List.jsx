@@ -51,7 +51,7 @@ const List = () => {
     <section className='bg-grey1x pt-14 pb-18 px-5 sm:px-10 lg:px-28'>
         <div className='flex flex-col gap-8 sm:gap-0 sm:flex-row justify-between sm:items-center'>
             <h1 className='inter inter-800 text-2xl sm:text-3xl lg:text-4xl capitalize'><span className='border-b-4 border-red1x'>list  </span>of properties</h1>
-            <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>View All Properties</button>
+            <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end hover:scale-90 hover:ring hover:ring-red1x hover:ring-offset-2 hover:bg-white hover:text-red1x transition-all ease-in-out duration-500 text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>View All Properties</button>
         </div>
         <section className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
             {loading ? templates.map((template)=>{return <ListSkeleton key={template}/>}) : listDataSet}

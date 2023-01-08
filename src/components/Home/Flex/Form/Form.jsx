@@ -48,7 +48,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>City</p>
                     <label htmlFor="city" className='relative w-full'>
-                        <select  name="city" id="city" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full'>
+                        <select  name="city" id="city" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
                             <option value="Select City" selected disabled>Select City</option>
                         </select>
                     </label>
@@ -56,7 +56,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>State</p>
                     <label htmlFor="state" className='relative w-full'>
-                        <select  name="state" id="state" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full'>
+                        <select  name="state" id="state" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
                             <option value="Select State" selected disabled>Select State</option>
                         </select>
                     </label>
@@ -64,7 +64,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full'>
+                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                         </select>
                     </label>
@@ -79,7 +79,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full'>
+                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                         </select>
                     </label>
@@ -95,14 +95,14 @@ const Form = () => {
                     <h1>Upload Photos</h1>
                     <label htmlFor="listingImg" id='listingImgLabel' className='w-full py-7 cursor-pointer relative flex flex-col items-center border border-dashed border-red1x rounded-ten'>
                         <input type="file" multiple id='listingImg' name='listing-img'  className='w-full bg-red-400 absolute top-fiftyPercent -translate-y-fiftyPercent h-full opacity-0'/>
-                        <div className=''>
+                        <div className='space-y-2 text-center sm:text-left'>
                             <h1 className='poppins poppins-700'>Drag your images here, or <span className='poppins-500 text-red1x'>browse</span></h1>
-                            <p>Supported:  JPG, JPEG, PNG</p>
+                            <p className='text-sm'>Supported:  JPG, JPEG, PNG</p>
                         </div>
                     </label>
                 </div>
                 <div className='col-span-1 sm:col-span-2 lg:col-span-3 pt-5 inter inter-500 text-lg sm:text-xl flex items-center justify-center'>
-                    <button type='submit' id='submitListing' className='bg-red1x hover:bg-red1x/90 hover:text-white active:translate-y-7 hover:ring-offset-white hover:ring-offset-4  hover:shadow-md transition-colors duration-500 ease-in-out hover:ring hover:ring-red1x text-white rounded-ten py-5 w-full sm:w-3/5 '>Add New Property</button>
+                    <button type='submit' id='submitListing' className='bg-red1x hover:bg-red1x/90 hover:text-white active:translate-y-7 hover:ring-offset-white hover:ring-offset-4 hover:shadow-md transition-all duration-500 ease-in-out hover:ring hover:ring-red1x text-white rounded-ten py-4 sm:py-5 w-full sm:w-3/5 '>Add New Property</button>
                 </div>
             </section>
         </form>

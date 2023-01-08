@@ -4,6 +4,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'wiggle': 'wiggle 3s linear infinite',
+        'fade-in': 'fadeIn 1s linear forwards',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '0.5' },
+          '100%': { opacity: '1' },
+        },
+      },
       colors:{
         'lightGrey1x':'#E6E6E6',
         'lightGrey2x':'#F9F9F9',
