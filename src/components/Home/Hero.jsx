@@ -19,10 +19,10 @@ const hero = () => {
                     <img src={SanFranMap} alt="map of san francisco bay area" className='row-span-2 col-span-1 sm:aspect-square w-full sm:max-w-md' />
                     {/* <div id="map"></div> */}
                     <div className='flex flex-col sm:flex-row gap-2 sm:gap-0 px-2 w-full sm:w-fit sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
-                        <select name="types" id="types" className='cursor-pointer px-5 py-4 border border-lightGrey1x bg-lightGrey2x'>
+                        <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x'>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select name="neighborhood" id="neighborhood" className='cursor-pointer px-5 py-4 border border-lightGrey1x bg-lightGrey2x'>
+                        <select name="neighborhood" id="neighborhood" className='cursor-pointer px-5 h-14 py-4 border border-lightGrey1x bg-lightGrey2x'>
                             <option value="Neighborhood" disabled selected>Neighborhood</option>
                         </select>
                         <button type='button' className='bg-blue1x rounded-ten sm:rounded-l-none sm:rounded-r-ten py-2 sm:py-0 px-5 flex items-center justify-center'>
