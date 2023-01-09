@@ -1,9 +1,13 @@
-import $ from 'jquery'
-import {React, useState, useEffect} from 'react'
+import {React, useState, useEffect, useRef} from 'react'
 import ListCards from './ListCards'
 import ListData from './ListData'
 import ListSkeleton from './ListSkeleton'
 import Pagination from './Pagination'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowUp19, faCircleArrowUp } from '@fortawesome/free-solid-svg-icons'
+// import $ from 'jquery'
+
+
 
 // import { FaBeer } from "react-icons/fa";
 
@@ -12,7 +16,9 @@ const List = () => {
     const [listLength, setListLength] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [loading, setLoading] = useState(false)
+    const [onScreen, setonScreen] = useState(false)
     const [rows, setRows] = useState(6)
+    const listingsRef = useRef()
 
    useEffect(() => {
     setListLength(ListData.length)
@@ -66,7 +72,33 @@ const List = () => {
         }
     }
 
+    // const isOnScreen = () => {
+    //     var curTop = $('#listings').offset().top()
+    //     var screenHeight = $(window).height()
+    //     curTop > screenHeight ? setonScreen(false) : setonScreen(false)
+    // }
+
+    const observer = new IntersectionObserver(
+        ([entry]) => setonScreen(entry.isIntersecting)
+      )
     
+    useEffect(() => {
+        // document.addEventListener('scroll', isOnScreen, true)
+        observer.observe(listingsRef.current)
+        return () => {
+            // document.removeEventListener('scroll', isOnScreen, true)
+            observer.disconnect()
+          } 
+    }, [onScreen])
+    
+    
+    
+    
+    // if(isOnScreen($('#listings'))){
+    //     $('#navToListingTop').classList.add('block')
+    // }else{
+    //     $('#navToListingTop').classList.add('hidden') 
+    // }
 
   return (
     <section id='listings' className='bg-grey1x pt-14 pb-18 px-5 sm:px-10 lg:px-28'>
@@ -75,8 +107,15 @@ const List = () => {
             <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end hover:scale-90 hover:ring hover:ring-red1x hover:ring-offset-2 hover:bg-white hover:text-red1x transition-all ease-in-out duration-500 text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>{rows === listLength ? 'View Fewer Properties' : 'View All Properties'}</button>
         </div>
         <div className='inter text-sm text-right pt-4'>Viewing {start+1} - {end} of {listLength} Properties</div>
-        <section className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
+        <section ref={listingsRef} className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
             {loading ? templates.map((template)=>{return <ListSkeleton key={template}/>}) : listDataSet}
+            <div className={`fixed bottom-5 right-5 animate-bounce z-250 group items-center justify-center ${onScreen ? 'flex' : 'hidden'}`} id="navToListingTop">
+                <a href="#listings" className='flex flex-row gap-3 items-center justify-center h-fit'>
+                {/* <p>{onScreen ? 'OnScreen' : 'Offscreen'}</p> */}
+                <p className='text-center text-xs hidden group-hover:block'>To Listings Top</p>
+                    <FontAwesomeIcon icon={faCircleArrowUp} className="text-red1x" size="xl" />
+                </a>
+            </div>
         </section>
         <section>
             <Pagination itemLength={listLength} rows={rows} currentPage={currentPage} paginate={paginate}/>
