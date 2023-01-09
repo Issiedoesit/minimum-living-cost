@@ -14,9 +14,9 @@ const hero = () => {
             <div className='sm:w-eightyPercent mx-auto lg:mx-0 lg:w-fortyPercent lg:text-left'>
                 <h1 className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affordable place to stay in the san franciso bay area</h1>
             </div>
-            <section className='lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
+            <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
-                    <img src={SanFranMap} alt="map of san francisco bay area" className='row-span-2 col-span-1 sm:aspect-square  sm:max-w-md' />
+                    <img src={SanFranMap} alt="map of san francisco bay area" className='row-span-2 col-span-1 sm:aspect-square w-full sm:max-w-md' />
                     {/* <div id="map"></div> */}
                     <div className='flex flex-col sm:flex-row gap-2 sm:gap-0 px-2 w-full sm:w-fit sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
                         <select name="types" id="types" className='cursor-pointer px-5 py-4 border border-lightGrey1x bg-lightGrey2x'>
