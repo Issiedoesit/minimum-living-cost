@@ -3,6 +3,7 @@ import Nav from '../Nav'
 import SanFranMap from './../../assets/images/sanFranMap.png'
 
 const hero = () => {
+
   return (
     <section className='hero relative'>
         <div className='z-10 absolute h-full w-full bg-black/30'></div>
@@ -16,6 +17,7 @@ const hero = () => {
             <section className='lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
                     <img src={SanFranMap} alt="map of san francisco bay area" className='row-span-2 col-span-1 sm:aspect-square  sm:max-w-md' />
+                    {/* <div id="map"></div> */}
                     <div className='flex flex-col sm:flex-row gap-2 sm:gap-0 px-2 w-full sm:w-fit sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
                         <select name="types" id="types" className='cursor-pointer px-5 py-4 border border-lightGrey1x bg-lightGrey2x'>
                             <option value="All Type" disabled selected>All Type</option>

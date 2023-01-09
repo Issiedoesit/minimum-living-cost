@@ -56,7 +56,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>State</p>
                     <label htmlFor="state" className='relative w-full'>
-                        <select  name="state" id="state" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select  name="state" id="state" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full h-full'>
                             <option value="Select State" selected disabled>Select State</option>
                         </select>
                     </label>
@@ -64,7 +64,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full h-full'>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                         </select>
                     </label>
@@ -79,7 +79,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full h-full'>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                         </select>
                     </label>
