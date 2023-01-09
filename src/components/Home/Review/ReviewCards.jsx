@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesRight, faAnglesLeft, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 
-const ReviewCards = ({id, review, img, user, job, video, direction, setDirection, currentSlide, setCurrentSlide, slideLength}) => {
+const ReviewCards = ({id, review, img, user, job, video, poster, currentSlide, setCurrentSlide, slideLength}) => {
     const [isPlaying, setIsPlaying] = useState(false)
     const element1 = <FontAwesomeIcon icon={faPlay} color='white' size='xl' title='Play' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
     const element2 = <FontAwesomeIcon icon={faPause} color='white' size='xl' title='Pause' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
@@ -26,15 +26,13 @@ const ReviewCards = ({id, review, img, user, job, video, direction, setDirection
 
 
     const moveSlide = (n) => {
-        // setCurrentSlide((prevCurrentSlide) => prevCurrentSlide += n)
         setCurrentSlide((prevCurrentSlide) => prevCurrentSlide + n)
-        // setDirection(n)
-        // alert(direction + 'I am ' + n)
     }
 
   return (
     <AnimatePresence>
     <motion.section 
+        id={id}
         key={currentSlide}
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -59,7 +57,9 @@ const ReviewCards = ({id, review, img, user, job, video, direction, setDirection
                 </div>
             </section>
             <section className='col-span-1 h-full relative group'>
-                <video src={video} className='min-h-full mx-auto'></video>
+                <video poster={poster} className='min-h-full mx-auto'>
+                    <source  src={video} type="video/mp4" />
+                </video>
                 <button type='button' className={`play-video group bg-red1x flex items-center justify-center h-16 w-16 rounded-fiftyPercent absolute top-fiftyPercent -translate-x-fiftyPercent -translate-y-fiftyPercent left-fiftyPercent z-20 transition-opacity duration-500 ${isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`} onClick={controlVideo}>
                     {isPlaying ? element2 : element1}
                 </button>

@@ -11,7 +11,7 @@ import ReviewData from './ReviewData'
 
 const Review = () => {
     const [currentSlide, setCurrentSlide] = useState(0)
-    const [direction, setDirection] = useState(1)
+    // const [direction, setDirection] = useState(1)
     // const [slideIndex, setSlideIndex] = useState(0)
     const [slideLength, setSlideLength] = useState(0)
 
@@ -19,7 +19,7 @@ const Review = () => {
         setSlideLength(ReviewData.length)
         console.log(slideLength);
         console.log(currentSlide);
-    }, [slideLength])
+    }, [slideLength, currentSlide])
 
     const dotItems = []
     
@@ -41,7 +41,18 @@ const Review = () => {
 
 
     const reviewDataSet = ReviewSlice.map((data)=>{
-        return <ReviewCards key={data.id} id={data.id} review={data.review} img={data.img} user={data.user} job={data.job} setDirection={setDirection} direction={direction} video={data.video} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} slideLength={slideLength} />
+        return <ReviewCards 
+        key={data.id} 
+        id={data.id} 
+        review={data.review} 
+        img={data.img} 
+        user={data.user} 
+        job={data.job} 
+        video={data.video} 
+        poster={data.poster} 
+        currentSlide={currentSlide} 
+        setCurrentSlide={setCurrentSlide} 
+        slideLength={slideLength} />
     })
     // for (let i = 0; i < slideLength; i++) {
     //     document.getElementById('slide_wrap').style.transform = translate((-100 * i)%)
@@ -56,7 +67,7 @@ const Review = () => {
         // alert(index)
         setCurrentSlide(index)
         // setCurrentSlide((prevCurrentSlide) => prevCurrentSlide + n)
-        setDirection(index)
+        // setDirection(index)
         // alert(direction)
     }
 

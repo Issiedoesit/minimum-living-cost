@@ -6,6 +6,7 @@ const ReviewData = [
         user:'GodAbeg February',
         job:'Property Claims Associate',
         video:'./../assets/videos/FloatHouse.mp4',
+        poster:'./../assets/videos/posters/FloatHouse.jpg',
     },
     {
         id:'review2',
@@ -14,6 +15,7 @@ const ReviewData = [
         user:'GodAbeg Dubai',
         job:'Mikano Housing',
         video:'./../assets/videos/FlyingHouse.mp4',
+        poster:'./../assets/videos/posters/FlyingHouse.jpg',
     },
     {
         id:'review3',
@@ -22,6 +24,7 @@ const ReviewData = [
         user:'GodAbeg Yusbi',
         job:'Dato Housing Annex',        
         video:'./../assets/videos/HouseBlue.mp4',
+        poster:'./../assets/videos/posters/HouseBlue.jpg',
     },
 ]
 
