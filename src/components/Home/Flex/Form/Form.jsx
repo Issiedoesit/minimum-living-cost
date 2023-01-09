@@ -86,6 +86,8 @@ const Form = () => {
                     <label htmlFor="roomType" className='relative w-full'>
                         <select  name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
                         </select>
                     </label>
                 </div>
