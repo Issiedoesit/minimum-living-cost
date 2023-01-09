@@ -12,7 +12,7 @@ import Review from './Review/Review'
 
 
 const Home = () => {
-    useDocTitle("Home");
+    useDocTitle("MLC | Home");
 
   return (
     <div>

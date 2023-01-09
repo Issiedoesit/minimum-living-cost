@@ -9,9 +9,9 @@ const hero = () => {
         <div className='z-20 relative top-0 left-0 px-5 sm:px-10 lg:px-28'>
             <Nav />
         </div>
-        <section className='px-5 sm:px-10 lg:px-28 pt-20 pb-40 z-20 relative flex flex-col lg:flex-row gap-10 lg:justify-between lg:items-center h-full'>
+        <section className='px-5 sm:px-10 lg:px-28 pt-20 pb-40 z-10 relative flex flex-col lg:flex-row gap-10 lg:justify-between lg:items-center h-full'>
             <div className='sm:w-eightyPercent mx-auto lg:mx-0 lg:w-fortyPercent lg:text-left'>
-                <h1 className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affortable place to stay in the san franciso bay area</h1>
+                <h1 className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affordable place to stay in the san franciso bay area</h1>
             </div>
             <section className='lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>

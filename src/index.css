@@ -80,6 +80,10 @@ body > *{
   border: blue;
 }
 
+.give-z-10{
+  z-index: 1;
+}
+
 .flex-form-label{
   @apply text-black;
   font-family: 'Poppins', sans-serif;

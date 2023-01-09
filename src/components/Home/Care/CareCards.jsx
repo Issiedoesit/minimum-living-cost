@@ -22,7 +22,7 @@ const CareCards = (props) => {
   return (
     <motion.div variants={care} initial='hidden' whileInView="show" viewport={{ once: true, amount: 0 }}  key={props.id} id={props.id} className="flex flex-col items-center sm:items-start text-left space-y-4">
         <div className='bg-white shadow-lg w-12 h-12 sm:w-18 sm:h-18 flex items-center justify-center rounded-ten'>
-            <img src={props.image} alt={props.alt} className="w-7 h-7 sm:w-9 sm:h-9"/>
+            <img loading='lazy' src={props.image} alt={props.alt} className="w-7 h-7 sm:w-9 sm:h-9"/>
         </div>
         <div>
             <h2 className='inter inter-600 text-center md:text-left'>{props.title}</h2>
