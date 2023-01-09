@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import $ from 'jquery'
 import React from 'react'
 
@@ -15,13 +16,32 @@ const Form = () => {
         .on('dragend drop dragexit dragleave', function() {
             this.classList.remove('dragged-over');
         });
+
+        const formWrap = {
+            slideOutRight: { 
+              opacity: 0,
+              y:150 
+             },
+            slideInLeft: { 
+              opacity: 1, 
+              y:0,
+              transition: {
+                type: "spring",
+                bounce: 0.4,
+                duration:5,
+                delayChildren: 5,
+                staggerDirection: 5,
+                when: "beforeChildren"
+              }
+             },
+        }
     
   return (
     <section className='space-y-9'>
         <h1 className='inter inter-500 text-center text-lg sm:text-2xl'>
             Your property with us and be Confident that Your Room will be Filled Out!
         </h1>
-        <form className='pt-11 px-5 sm:px-16 pb-14 bg-white shadow-2xl rounded-ten'>
+        <motion.form variants={formWrap} initial="slideOutRight" whileInView="slideInLeft" viewport={{once:true, amount:0}} className='pt-11 px-5 sm:px-16 pb-14 bg-white shadow-2xl rounded-ten'>
             <h1 className='text-red1x poppins poppins-700 text-xl sm:text-3xl text-center'>Add A New Property</h1>
             <section className='flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 pt-8 sm:pt-16 gap-4 sm:gap-10'>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
@@ -105,7 +125,7 @@ const Form = () => {
                     <button type='submit' id='submitListing' className='bg-red1x hover:bg-red1x/90 hover:text-white active:translate-y-7 hover:ring-offset-white hover:ring-offset-4 hover:shadow-md transition-all duration-500 ease-in-out hover:ring hover:ring-red1x text-white rounded-ten py-4 sm:py-5 w-full sm:w-3/5 '>Add New Property</button>
                 </div>
             </section>
-        </form>
+        </motion.form>
     </section>
   )
 }

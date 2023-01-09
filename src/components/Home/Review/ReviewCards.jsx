@@ -29,6 +29,8 @@ const ReviewCards = ({id, review, img, user, job, video, poster, currentSlide, s
         setCurrentSlide((prevCurrentSlide) => prevCurrentSlide + n)
     }
 
+    
+
   return (
     <AnimatePresence>
     <motion.section 

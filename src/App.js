@@ -5,6 +5,8 @@ import Home from './components/Home/Home';
 import Landlord from './components/Landlord/Landlord';
 import Tenants from './components/Tenants/Tenants';
 import Error from './components/Error';
+import ScrollProgress from './ScrollProgress';
+
 
 
 
@@ -14,6 +16,7 @@ import Error from './components/Error';
 function App() {
   return (
     <div className="App">
+      <ScrollProgress />
         <Routes>
           <Route index path="/" element={<Home />}></Route>
           <Route path="/landlord" element={<Landlord />}></Route>
