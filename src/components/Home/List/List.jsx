@@ -78,16 +78,9 @@ const List = () => {
     //     curTop > screenHeight ? setonScreen(false) : setonScreen(false)
     // }
 
-
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.4
-    }
-
     const observer = new IntersectionObserver(
         ([entry]) => setonScreen(entry.isIntersecting)
-      , options)
+      )
     
     useEffect(() => {
         // document.addEventListener('scroll', isOnScreen, true)
