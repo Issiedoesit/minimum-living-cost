@@ -65,7 +65,7 @@ const Hero = () => {
                         <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x rounded-ten sm:rounded-l-ten sm:rounded-r-none'>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 rounded-ten sm:rounded-none sm:w-40 border border-lightGrey1x bg-lightGrey2x'>
+                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 rounded-ten sm:rounded-none sm:w-44 border border-lightGrey1x bg-lightGrey2x'>
                             {/* <option value="Neighborhood" disabled selected>Neighborhood</option> */}
                             {SanfranAreas.map((areas)=>{
                                return <option value={areas.coordinates}>{areas.name}</option>
