@@ -82,8 +82,8 @@ const Review = () => {
         <section className='px-10 lg:px-28 dot-wrap pt-10 lg:pt-0 lg:-translate-y-[300%] mx-auto lg:mx-0 w-fit h-fit flex flex-row items-center gap-4 lg:gap-3'>
             {/* <button onClick={()=>currentSlide > 0 ? moveSlide(-1) : setCurrentSlide(slideLength-1)} className="hover:text-red1x inter inter-700 text-xl transition-colors duration-500 absolute"><FontAwesomeIcon icon={faAnglesLeft} className="text-red1x hover:scale-125 transition-transform ease-in-out duration-500" /></button> */}
             {/* {currentSlide} */}
-            {dotItems.map((dotItem)=>{
-                return <Dots dotItem={dotItem} changeSlide={changeSlide} currentSlide={currentSlide}/>
+            {dotItems.map((dotItem, index)=>{
+                return <Dots dotItem={dotItem} key={'dotItem'+index} changeSlide={changeSlide} currentSlide={currentSlide}/>
             })}
             {/* <button onClick={()=>currentSlide < (slideLength-1) ? moveSlide(+1) : setCurrentSlide(0)} className="hover:text-red1x inter inter-700 text-xl transition-colors duration-500"><FontAwesomeIcon icon={faAnglesRight} className="text-red1x hover:scale-125 transition-transform ease-in-out duration-500" /></button> */}
         </section>

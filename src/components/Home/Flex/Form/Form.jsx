@@ -13,7 +13,8 @@ const Form = () => {
 
     const [alertDisplay, setAlertDisplay] = useState('hidden')
     const [fieldsEmpty, setFieldsEmpty] = useState(false)
-
+    const [imageLength, setImageLength] = useState(0)
+   
     const nameRef = useRef('')
     const addressRef = useRef('')
     const unitRef = useRef('')
@@ -38,17 +39,19 @@ const Form = () => {
         imageRef
     ]
 
-    $('#listingImg').on('change', function upload(evt) {
-        // console.log(this.files);
-        const imageFiles = this.files
+    $('#listingImg').on('change',  function upload(e) {
         // let images = ''
-        // for (let i = 0; i < imageFiles.length; i++) {
-        //     images += `
-        //         <div className="show-img h-20 bg-red-500 cols-span-1 rounded-ten">
-        //             <img src=${imageFiles[i].name} alt=""  classList="object-cover"/>
-        //         </div>  
-        //     `
-        // }
+        // if (e.target.files && e.target.files[0]) {
+        //     for (let i = 0; i <  e.target.files.length; i++) {
+        //         const element =  e.target.files[i];
+        //         images += 
+        //         `
+        //         <div className="show-img h-20 col-span-1 rounded-ten">
+        //             <img src=${URL.createObjectURL(e.target.files[i])} alt=""  classList="object-cover"/>
+        //          </div>
+        //         `
+        //     }
+        //   }
         // $('#showFiles').html(images)
     });
       
@@ -205,9 +208,11 @@ const Form = () => {
                         </div>
                     </label>
                 </div>
-                {/* <div id="showFiles" className="h-20 gap-5 grid sm:grid sm:grid-cols-2 lg:grid-cols-3">
-                  
-                </div> */}
+                <div id="showFiles" className={`${imageLength ? 'h-20' : 'h-0'} gap-5 grid sm:grid sm:grid-cols-2 lg:grid-cols-3`}>
+                    {/* <div className="show-img cols-span-1 rounded-ten">
+                        <img src={image} alt=""  classList="object-cover"/>
+                    </div> */}
+                </div>
                 <div className='col-span-1 sm:col-span-2 lg:col-span-3 pt-5 inter inter-500 text-lg sm:text-xl flex items-center justify-center'>
                     <button onClick={handleSubmit} type='button' id='submitListing' className='bg-red1x hover:bg-red1x/90 hover:text-white active:translate-y-7 hover:ring-offset-white hover:ring-offset-4 hover:shadow-md transition-all duration-500 ease-in-out hover:ring hover:ring-red1x text-white rounded-ten py-4 sm:py-5 w-full sm:w-3/5 '>Add New Property</button>
                 </div>
