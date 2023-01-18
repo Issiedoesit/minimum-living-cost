@@ -17,8 +17,8 @@ const Review = () => {
 
     useEffect(() => {
         setSlideLength(ReviewData.length)
-        console.log(slideLength);
-        console.log(currentSlide);
+        // console.log(slideLength);
+        // console.log(currentSlide);
     }, [slideLength, currentSlide])
 
     const dotItems = []

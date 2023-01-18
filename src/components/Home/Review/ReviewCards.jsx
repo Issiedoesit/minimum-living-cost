@@ -21,7 +21,7 @@ const ReviewCards = ({id, review, img, user, job, video, poster, currentSlide, s
     // needs to be double clicked
 
     useEffect(() => {
-        console.log(isPlaying);
+        // console.log(isPlaying);
     }, [isPlaying])
 
 

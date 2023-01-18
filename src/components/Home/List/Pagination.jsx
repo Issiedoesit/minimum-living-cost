@@ -33,7 +33,7 @@ function Pagination({itemLength, rows, currentPage, paginate}){
             </div>
             <div id='page_wrap' className='flex flex-row h-full divide-x divide-grey3x'>
                 {pageNumbers.map((page)=>{
-                    return <button type='button' id={`btn${page}`} onClick={()=> paginate(page)} className={`page-nav ${page === currentPage ? "active-page text-red1x page-nav flex items-center bg-white px-4" : "text-red1x page-nav flex items-center bg-white px-4 hover:bg-red1x/80 ease-in-out hover:text-white transition-colors duration-500"}  `}>{page}</button>
+                    return <button type='button' id={`btn`+page} key={`btn`+page} onClick={()=> paginate(page)} className={`page-nav ${page === currentPage ? "active-page text-red1x page-nav flex items-center bg-white px-4" : "text-red1x page-nav flex items-center bg-white px-4 hover:bg-red1x/80 ease-in-out hover:text-white transition-colors duration-500"}  `}>{page}</button>
                 })}
             </div>
             <div className='h-full flex rounded-r-eight'>

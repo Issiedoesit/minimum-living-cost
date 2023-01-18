@@ -54,7 +54,8 @@ module.exports = {
       },
       screens:{
         'mds': {'min': '500px', 'max': '639px'},
-        'xs': {'min': '200px', 'max': '300px'},
+        'xxs': {'min': '240px', 'max': '300px'},
+        'xs': {'min': '300px', 'max': '320px'},
         'xsHeight': { 'raw': '(max-height:510px)'},
         'btwmdlg':'1000px'
       },
