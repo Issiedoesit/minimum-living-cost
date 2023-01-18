@@ -4,6 +4,8 @@ import { Icon } from 'leaflet'
 import { MapContainer,  TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import "./../../../node_modules/leaflet/dist/leaflet.css";
 import SanfranAreas from './Map/SanFranAreas';
+import $ from 'jquery';
+
 
 
 const RecenterAutomatically = ({position}) => {
@@ -18,13 +20,17 @@ const RecenterAutomatically = ({position}) => {
 
 
 const Hero = () => {
-    const [position, setPosition] = useState([37.725353, -122.445496])
+    const [position, setPosition] = useState([37.776667, -122.277778])
     const [nValue, setNValue] = useState('')
+    const [area, setArea] = useState('Alameda (Island)')
 
 
     const handleSelect = () =>{
         let newValue = nValue.split(',')
         setPosition(newValue)
+
+       let newArea =  $("#neighborhood option:selected").text();
+        setArea(newArea)
     }
 
     
@@ -42,14 +48,14 @@ const Hero = () => {
             <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
                     <div id="map" className="">
-                    <MapContainer center={position} zoom={15} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
+                    <MapContainer center={position} zoom={18} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
                         <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={position} >
+                        <Marker position={position}>
                             <Popup>
-                                Get property in the area. <br /> Easily with <span className='text-red1x'>MLC</span>.
+                                Get property in the {area} area. <br /> Easily with <span className='text-red1x'>MLC</span>.
                             </Popup>
                         </Marker>
                         <RecenterAutomatically position={position}/>                    
@@ -59,7 +65,7 @@ const Hero = () => {
                         <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x'>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 border border-lightGrey1x bg-lightGrey2x'>
+                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 sm:w-40 border border-lightGrey1x bg-lightGrey2x'>
                             {/* <option value="Neighborhood" disabled selected>Neighborhood</option> */}
                             {SanfranAreas.map((areas)=>{
                                return <option value={areas.coordinates}>{areas.name}</option>
