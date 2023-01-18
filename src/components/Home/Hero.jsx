@@ -21,15 +21,17 @@ const RecenterAutomatically = ({position}) => {
 const Hero = () => {
     const [position, setPosition] = useState([37.725353, -122.445496])
     const [nValue, setNValue] = useState('')
-    const [newArray, setNewArray] = useState([])
+    // const [newArray, setNewArray] = useState([])
     const mapRef = useRef()
 
 
     const handleSelect = () =>{
-        console.log(nValue)
+        // console.log(nValue)
         let newValue = nValue.split(',')
+        const newArray = []
+        console.log(newArray);
         for (let i = 0; i < newValue.length; i++) {
-           setNewArray(newArray.push(parseFloat(newValue[i])));
+           newArray.push(parseFloat(newValue[i]));
             
         }
         console.log(newArray);
@@ -57,7 +59,7 @@ const Hero = () => {
             <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
                     <div id="map" className="">
-                    <MapContainer ref={mapRef} center={position} zoom={13} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
+                    <MapContainer ref={mapRef} center={position} zoom={15} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
                         <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
