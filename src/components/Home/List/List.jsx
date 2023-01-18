@@ -61,44 +61,30 @@ const List = () => {
      
     const showAll = () => {
         setLoading(true)
-        setTimeout(() => {
-            setCurrentPage(1)
-            setLoading(false)
-        }, 1000);
+        setCurrentPage(1)
         if (rows === listLength){
             setRows(6)
         }else{
             setRows(listLength)
         }
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+        
     }
-
-    // const isOnScreen = () => {
-    //     var curTop = $('#listings').offset().top()
-    //     var screenHeight = $(window).height()
-    //     curTop > screenHeight ? setonScreen(false) : setonScreen(false)
-    // }
 
     const observer = new IntersectionObserver(
         ([entry]) => setonScreen(entry.isIntersecting)
       )
     
     useEffect(() => {
-        // document.addEventListener('scroll', isOnScreen, true)
         observer.observe(listingsRef.current)
         return () => {
-            // document.removeEventListener('scroll', isOnScreen, true)
             observer.disconnect()
           } 
     }, [onScreen])
     
-    
-    
-    
-    // if(isOnScreen($('#listings'))){
-    //     $('#navToListingTop').classList.add('block')
-    // }else{
-    //     $('#navToListingTop').classList.add('hidden') 
-    // }
+   
 
   return (
     <section id='listings' className='bg-grey1x pt-14 pb-18 px-5 sm:px-10 lg:px-28'>
@@ -106,7 +92,7 @@ const List = () => {
             <h1 className='inter inter-800 text-2xl sm:text-3xl lg:text-4xl capitalize'><span className='border-b-4 border-red1x'>list  </span>of properties</h1>
             <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end hover:scale-90 hover:ring hover:ring-red1x hover:ring-offset-2 hover:bg-white hover:text-red1x transition-all ease-in-out duration-500 text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>{rows === listLength ? 'View Fewer Properties' : 'View All Properties'}</button>
         </div>
-        <div className='inter text-sm text-right pt-4'>Viewing {start+1} - {end} of {listLength} Properties</div>
+        <div className='inter text-sm text-right pt-4'>Viewing {start+1} - {listLength >= end ? end : listLength} of {listLength} Properties</div>
         <section ref={listingsRef} className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
             {loading ? templates.map((template)=>{return <ListSkeleton key={template}/>}) : listDataSet}
             <div className={`fixed bottom-5 right-5 animate-bounce z-250 group items-center justify-center ${onScreen ? 'flex' : 'hidden'}`} id="navToListingTop">
