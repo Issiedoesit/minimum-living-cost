@@ -1,32 +1,48 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Nav from '../Nav'
 import { Icon } from 'leaflet'
-import { MapContainer,  TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer,  TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import "./../../../node_modules/leaflet/dist/leaflet.css";
 import SanfranAreas from './Map/SanFranAreas';
-// import $ from 'jquery';
+import $ from 'jquery';
 
+
+const RecenterAutomatically = ({position}) => {
+    const map = useMap();
+    useEffect(() => {
+    map.setView(position, 13);
+    map.flyTo(position, 13)
+    }, [position]);
+    return null;
+}
 
 
 
 const Hero = () => {
-    // const position = [37.725353, -122.445496]
-
     const [position, setPosition] = useState([37.725353, -122.445496])
-    const [nValue, setNValue] = useState([37.725353, -122.445496])
+    const [nValue, setNValue] = useState('')
+    const [newArray, setNewArray] = useState([])
+    const mapRef = useRef()
+
 
     const handleSelect = () =>{
-       console.log(nValue)
-    //    console.log();
-       console.log(position);
+        console.log(nValue)
+        let newValue = nValue.split(',')
+        for (let i = 0; i < newValue.length; i++) {
+           setNewArray(newArray.push(parseFloat(newValue[i])));
+            
+        }
+        console.log(newArray);
+        setPosition(newArray)
+        
+        // const { current = {}} = mapRef;
+        // const { leafletElement: map} = current
+        // map.setView(position, 13)
+        // map.flyTo(position, 13)
+        
     }
 
-
-    // useEffect(() => {
-    //     setPosition(nValue);
-    // }, [nValue])
     
-
 
   return (
     <section className='hero relative'>
@@ -41,23 +57,24 @@ const Hero = () => {
             <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
                     <div id="map" className="">
-                    <MapContainer center={position} zoom={13} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
+                    <MapContainer ref={mapRef} center={position} zoom={13} scrollWheelZoom={false} icon={new Icon({iconUrl: './assets/images/icons/leaflet/images/marker-icon.png', iconSize:[20, 36], iconAnchor:[20, 36]})} className="xxs:w-60 xxs:h-60 xs:w-72 xs:h-72 w-80 h-80 sm:h-96 sm:w-96 max-w-sm rounded-ten">
                         <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
                         <Marker position={position} >
-                        <Popup>
-                            Get property in the area. <br /> Easily with <span className='text-red1x'>MLC</span>.
-                        </Popup>
+                            <Popup>
+                                Get property in the area. <br /> Easily with <span className='text-red1x'>MLC</span>.
+                            </Popup>
                         </Marker>
+                        <RecenterAutomatically position={position}/>                    
                     </MapContainer>
                     </div>
                     <div className='flex flex-col sm:flex-row gap-2 sm:gap-0 px-2 xxs:w-60 xs:w-72 w-80 max-w-sm sm:w-96 sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
                         <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x'>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select onChange={(e)=>setNValue(e.target.value)} name="neighborhood" id="neighborhood" className='cursor-pointer px-5 h-14 py-4 border border-lightGrey1x bg-lightGrey2x'>
+                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 border border-lightGrey1x bg-lightGrey2x'>
                             {/* <option value="Neighborhood" disabled selected>Neighborhood</option> */}
                             {SanfranAreas.map((areas)=>{
                                return <option value={areas.coordinates}>{areas.name}</option>
