@@ -50,7 +50,8 @@ module.exports = {
         fiftyPercent: "50%"
       },
       borderWidth: {
-        '0.5': '0.5px'
+        '0.5': '0.5px',
+        '6': '6px',
       },
       screens:{
         'mds': {'min': '500px', 'max': '639px'},
