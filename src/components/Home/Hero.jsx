@@ -61,11 +61,11 @@ const Hero = () => {
                         <RecenterAutomatically position={position}/>                    
                     </MapContainer>
                     </div>
-                    <div className='flex flex-col sm:flex-row gap-2 sm:gap-0 px-2 xxs:w-60 xs:w-72 w-80 max-w-sm sm:w-96 sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
-                        <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x'>
+                    <div className='flex flex-col sm:flex-row sm:justify-center gap-2 sm:gap-0 px-2 xxs:w-60 xs:w-72 w-80 max-w-sm sm:w-96 sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
+                        <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x rounded-ten sm:rounded-l-ten sm:rounded-r-none'>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 sm:w-40 border border-lightGrey1x bg-lightGrey2x'>
+                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 rounded-ten sm:rounded-none sm:w-40 border border-lightGrey1x bg-lightGrey2x'>
                             {/* <option value="Neighborhood" disabled selected>Neighborhood</option> */}
                             {SanfranAreas.map((areas)=>{
                                return <option value={areas.coordinates}>{areas.name}</option>
