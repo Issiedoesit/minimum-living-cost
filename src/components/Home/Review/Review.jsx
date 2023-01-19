@@ -21,6 +21,11 @@ const Review = () => {
         dotItems.push(i)
     }
 
+    let allVideos = []
+    ReviewData.map((data)=>{
+        allVideos.push(data.video)
+    })
+
     const ReviewSlice = ReviewData.slice(currentSlide)
 
     
@@ -31,6 +36,7 @@ const Review = () => {
         review={data.review} 
         img={data.img} 
         user={data.user} 
+        allVideos={allVideos}
         job={data.job} 
         video={data.video} 
         poster={data.poster} 
