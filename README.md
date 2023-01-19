@@ -1,5 +1,5 @@
 # Live Link
-(Minumum-Living-cost)[https://minimum-living-cost.vercel.app/]
+[Minumum-Living-cost](https://minimum-living-cost.vercel.app/)
 
 
 
