@@ -14,7 +14,9 @@ const Form = () => {
     const [alertDisplay, setAlertDisplay] = useState('hidden')
     const [fieldsEmpty, setFieldsEmpty] = useState(false)
     const [imageLength, setImageLength] = useState(0)
+    const clearTimerRef = useRef();
    
+
     const nameRef = useRef('')
     const addressRef = useRef('')
     const unitRef = useRef('')
@@ -85,9 +87,14 @@ const Form = () => {
             }
             },
     }
+
+
+
     
     const handleSubmit = (e) =>{   
         e.preventDefault()
+        clearTimeout(clearTimerRef.current)
+      
         // let lent = 0
         // for (let i = 0; i < allRefs.length; i++) {
         //     if(allRefs[i].current.value === ''){
@@ -112,11 +119,13 @@ const Form = () => {
         }else{
             setFieldsEmpty(false)
         }
+        $('#alert').animate({opacity: '1'}, 100)
         setAlertDisplay('')
-        alertRef.current.classList.remove('hidden')
-        setTimeout(() => {
+        clearTimerRef.current = setTimeout(() => {
+            // $('#alert').animate({opacity: '0'}, 100)
             setAlertDisplay('hidden')
         }, 5000);
+        
        
     }
 
@@ -222,7 +231,7 @@ const Form = () => {
                 </div>
             </section>
         </motion.form>
-        {fieldsEmpty ? <Alert alertRef={alertRef} alertDisplay={alertDisplay} mainColor={"red-500"} alertIcon={faExclamationCircle} alertHeading={"Error"} alertMessage={"Please fill all fields"} /> : <Alert alertRef={alertRef} alertDisplay={alertDisplay} mainColor={"green-500"} alertIcon={faCheck} alertHeading={"Success"} alertMessage={"Property Added"} />}
+        {fieldsEmpty ? <Alert alertRef={alertRef} clearTimerRef={clearTimerRef} alertDisplay={alertDisplay} setAlertDisplay={setAlertDisplay}  mainColor={"red-500"} alertIcon={faExclamationCircle} alertHeading={"Error"} alertMessage={"Please fill all fields"} /> : <Alert alertRef={alertRef} clearTimerRef={clearTimerRef} alertDisplay={alertDisplay} setAlertDisplay={setAlertDisplay} mainColor={"green-500"} alertIcon={faCheck} alertHeading={"Success"} alertMessage={"Property Added"} />}
     </section>
   )
 }

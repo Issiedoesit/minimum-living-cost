@@ -11,7 +11,7 @@ const ListCards = (props) => {
   const listingCards = {
     slideDown: { 
         opacity: 0,
-        y:100 
+        y:20
         },
     slideUp: { 
         opacity: 1, 

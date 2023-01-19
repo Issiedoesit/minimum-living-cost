@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 
 
 
-const Alert = ({alertRef, mainColor, alertIcon, alertHeading, alertMessage, alertDisplay }) => {
-    
+const Alert = ({alertRef, clearTimerRef, mainColor, alertIcon, alertHeading, alertMessage, alertDisplay, setAlertDisplay }) => {
+ 
     const handleClose = () => {
-        alertDisplay = 'hidden'
-        $('#alert').addClass('hidden')
+        $('#alert').animate({opacity: '0'}, 400)
+        setTimeout(() => {
+            setAlertDisplay('hidden')
+        }, 400);
+        clearTimeout(clearTimerRef.current)
     }
+    
 
     return (
         <div id='alert' ref={alertRef} className={`w-ninetyPercent ${alertDisplay} max-w-sm inter fixed bg-white shadow-md z-50 rounded-lg border-l-6 border-l-${mainColor} right-4 top-2`}>

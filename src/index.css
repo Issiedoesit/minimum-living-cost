@@ -104,7 +104,16 @@ body > *{
 
 .hero{
   background: url('./assets/images/hero.png');
+
+  /* with no parallax scrolling */
+  /* min-height: 100vh;
+  background-size: cover; */
+
+  /* with parallax scrolling */
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -122,12 +131,47 @@ body > *{
 }
 
 
+@-webkit-keyframes loading {
+  from{
+    background-color:#e4e2e2 ;
+  }
+  to{
+    background-color: #979696;
+  }
+}
+
 @keyframes loading {
   from{
     background-color:#e4e2e2 ;
   }
   to{
     background-color: #979696;
+  }
+}
+@-webkit-keyframes fadeOut600 {
+  from{
+    opacity:1;
+  }
+  to{
+    opacity:0;
+  }
+}
+
+@keyframes fadeOut600 {
+  from{
+    opacity:1;
+  }
+  to{
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes closeTimer {
+  from{
+    width:100%;
+  }
+  to{
+    width: 0px;
   }
 }
 
