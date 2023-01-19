@@ -2,10 +2,31 @@ import React from 'react'
 import Bed from './../../../assets/images/icons/list/Bed.svg'
 import Bath from './../../../assets/images/icons/list/Shower.svg'
 import Size from './../../../assets/images/icons/list/Size.svg'
+import { motion } from 'framer-motion'
+
+
 
 const ListCards = (props) => {
+
+  const listingCards = {
+    slideDown: { 
+        opacity: 0,
+        y:100 
+        },
+    slideUp: { 
+        opacity: 1, 
+        y:0,
+        transition: {
+        type: "spring",
+        bounce: 0,
+        duration:2,
+        }
+        },
+}
+
+
   return (
-    <div key={props.id} id={props.id} className="dm shadow-lg rounded-26.62px w-ninetyPercent sm:w-auto max-w-[350px] hover:scale-90 transition-transform ease-in-out duration-500 mx-auto">
+    <motion.div variants={listingCards} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} key={props.id} id={props.id} className="dm shadow-lg rounded-26.62px w-ninetyPercent sm:w-auto max-w-[350px] hover:scale-90 transition-transform ease-in-out duration-500 mx-auto">
       <div>
         <img loading='lazy' src={props.img} alt="listing" />
         <section className='bg-white text-left rounded-b-26.62px pt-18px space-y-18px'>
@@ -30,7 +51,7 @@ const ListCards = (props) => {
           </div>
         </section>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

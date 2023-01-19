@@ -5,7 +5,8 @@ import ListSkeleton from './ListSkeleton'
 import Pagination from './Pagination'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowUp19, faCircleArrowUp } from '@fortawesome/free-solid-svg-icons'
-// import $ from 'jquery'
+import { motion } from 'framer-motion'
+
 
 
 
@@ -83,6 +84,24 @@ const List = () => {
             observer.disconnect()
           } 
     }, [onScreen])
+
+    const listingWrap = {
+        slideDown: { 
+            opacity: 0,
+            y:150 
+            },
+        slideUp: { 
+            opacity: 1, 
+            y:0,
+            transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration:5,
+            staggerDirection: 1,
+            when: "beforeChildren"
+            }
+            },
+    }
     
    
 
@@ -93,7 +112,7 @@ const List = () => {
             <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end hover:scale-90 hover:ring hover:ring-red1x hover:ring-offset-2 hover:bg-white hover:text-red1x transition-all ease-in-out duration-500 text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>{rows === listLength ? 'View Fewer Properties' : 'View All Properties'}</button>
         </div>
         <div className='inter text-sm text-right pt-4'>Viewing {start+1} - {listLength >= end ? end : listLength} of {listLength} Properties</div>
-        <section ref={listingsRef} className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
+        <motion.section variants={listingWrap} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} ref={listingsRef} className='pt-14 pb-18 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
             {loading ? templates.map((template)=>{return <ListSkeleton key={template}/>}) : listDataSet}
             <div className={`fixed bottom-5 right-5 animate-bounce z-250 group items-center justify-center ${onScreen ? 'flex' : 'hidden'}`} id="navToListingTop">
                 <a href="#listings" className='flex flex-row gap-3 items-center justify-center h-fit'>
@@ -102,7 +121,7 @@ const List = () => {
                     <FontAwesomeIcon icon={faCircleArrowUp} className="text-red1x" size="xl" />
                 </a>
             </div>
-        </section>
+        </motion.section>
         <section>
             <Pagination itemLength={listLength} rows={rows} currentPage={currentPage} paginate={paginate}/>
         </section>

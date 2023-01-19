@@ -40,6 +40,10 @@ const Form = () => {
     ]
 
     $('#listingImg').on('change',  function upload(e) {
+
+        // DON'T DELETE YET 
+
+
         // let images = ''
         // if (e.target.files && e.target.files[0]) {
         //     for (let i = 0; i <  e.target.files.length; i++) {
@@ -64,11 +68,11 @@ const Form = () => {
     });
 
     const formWrap = {
-        slideOutRight: { 
+        slideDown: { 
             opacity: 0,
             y:150 
             },
-        slideInLeft: { 
+        slideUp: { 
             opacity: 1, 
             y:0,
             transition: {
@@ -76,7 +80,7 @@ const Form = () => {
             bounce: 0.4,
             duration:5,
             delayChildren: 5,
-            staggerDirection: 5,
+            staggerDirection: 1,
             when: "beforeChildren"
             }
             },
@@ -121,7 +125,7 @@ const Form = () => {
         <h1 className='inter inter-500 text-center text-lg sm:text-2xl'>
             Your property with us and be Confident that Your Room will be Filled Out!
         </h1>
-        <motion.form id="myForm" variants={formWrap} initial="slideOutRight" whileInView="slideInLeft" viewport={{once:true, amount:0}} className='pt-11 px-5 sm:px-16 pb-14 bg-white shadow-2xl rounded-ten'>
+        <motion.form id="myForm" variants={formWrap} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className='pt-11 px-5 sm:px-16 pb-14 bg-white shadow-2xl rounded-ten'>
             <h1 className='text-red1x poppins poppins-700 text-xl sm:text-3xl text-center'>Add A New Property</h1>
             <section className='flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 pt-8 sm:pt-16 gap-4 sm:gap-10'>
                 <div className='flex flex-col gap-4 items-start col-span-1'>

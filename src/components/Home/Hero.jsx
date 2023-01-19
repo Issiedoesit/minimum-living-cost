@@ -5,6 +5,8 @@ import { MapContainer,  TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import "./../../../node_modules/leaflet/dist/leaflet.css";
 import SanfranAreas from './Map/SanFranAreas';
 import $ from 'jquery';
+import { motion } from 'framer-motion';
+
 
 
 
@@ -33,6 +35,27 @@ const Hero = () => {
         setArea(newArea)
     }
 
+
+    const text = {
+        slideDown: { 
+            opacity: 0,
+            y:150,
+            scale:0,
+            rotate:90
+            },
+        slideUp: { 
+            opacity: 1, 
+            y:0,
+            scale:1,
+            rotate:0,
+            transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration:5,
+            }
+            },
+    }
+
     
 
   return (
@@ -43,7 +66,7 @@ const Hero = () => {
         </div>
         <section className='px-5 sm:px-10 lg:px-28 pt-20 pb-40 z-10 relative flex flex-col lg:flex-row gap-10 lg:justify-between lg:items-center h-full'>
             <div className='sm:w-eightyPercent mx-auto lg:mx-0 lg:w-fortyPercent lg:text-left'>
-                <h1 className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affordable place to stay in the san franciso bay area</h1>
+                <motion.h1 variants={text} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affordable place to stay in the san franciso bay area</motion.h1>
             </div>
             <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
