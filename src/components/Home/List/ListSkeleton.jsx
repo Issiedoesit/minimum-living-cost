@@ -1,10 +1,14 @@
 import React from 'react'
+import useThemeStore from '../../../customHooks/useThemeStore'
 
 const ListSkeleton = () => {
+
+    const theme = useThemeStore(state=>state.theme)
+
   return (
-    <div className='w-full rounded-26.62px shadow-lg'>
+    <div className='w-ninetyPercent sm:w-auto max-w-[350px] mx-auto rounded-26.62px shadow-lg'>
         <div className='h-80 bg-gray-300 skeleton rounded-t-26.62px'></div>
-        <div className='bg-white rounded-b-26.62px space-y-5 h-fit w-full pt-5'>
+        <div className={`${theme === 'light' ? 'bg-white text-black' : 'bg-black/40 text-white'} rounded-b-26.62px space-y-5 h-fit w-full pt-5`}>
             <div className='px-5'>
                 <div className='h-10 w-eightyFivePercent bg-gray-300 skeleton'></div>
             </div>
@@ -15,15 +19,15 @@ const ListSkeleton = () => {
                 </div>
             </div>
             <div className='divide-x  rounded-b-26.62px  border-t grid grid-cols-3'>
-                <div className="py-6 col-span-1 bg-white flex flex-row items-center justify-center gap-2 rounded-bl-26.62px">
+                <div className={`py-6 col-span-1 ${theme === 'light' ? 'bg-white text-black' : 'bg-black/40 text-white'} flex flex-row items-center justify-center gap-2 rounded-bl-26.62px`}>
                     <div className='w-4 bg-gray-300 skeleton h-4 rounded-fiftyPercent'></div>
                     <div className='w-6 bg-gray-300 skeleton h-4'></div>
                 </div>
-                <div className="py-6 col-span-1 bg-white flex flex-row items-center justify-center gap-2">
+                <div className={`py-6 col-span-1 ${theme === 'light' ? 'bg-white text-black' : 'bg-black/40 text-white'} flex flex-row items-center justify-center gap-2`}>
                     <div className='w-4 bg-gray-300 skeleton h-4 rounded-fiftyPercent'></div>
                     <div className='w-6 bg-gray-300 skeleton h-4'></div>
                 </div>
-                <div className="py-6 col-span-1 bg-white flex flex-row items-center justify-center gap-2 rounded-br-26.62px">
+                <div className={`py-6 col-span-1 ${theme === 'light' ? 'bg-white text-black' : 'bg-black/40 text-white'} flex flex-row items-center justify-center gap-2 rounded-br-26.62px`}>
                     <div className='w-4 bg-gray-300 skeleton h-4 rounded-fiftyPercent'></div>
                     <div className='w-6 bg-gray-300 skeleton h-4'></div>
                 </div>
