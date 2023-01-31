@@ -92,7 +92,7 @@ body > *{
   border: blue;
 }
 
-.give-z-10{
+.z-10{
   z-index: 1;
 }
 
