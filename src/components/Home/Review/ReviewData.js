@@ -19,7 +19,7 @@ const ReviewData = [
     },
     {
         id:'review3',
-        review:'The best duo for the Job, We are not just creating homes but building Potential. We want to make our clients proud to have an MLC membership anywhere in the world. Our principal officer got the advice to start up from a mad man and we\'ve been running ever since. Choose us to experience youth, honesty and vision in MLC',
+        review:'The best duo for the Job, We are not just creating homes but building Potential. We want to make our clients proud to have an MLC membership anywhere in the world. Our principal officer got the advice to start up from a mad man and we\'ve been running ever since. Choose us to experience youth, honesty and vision in the MLC for once.',
         img:'./../assets/images/review/reviewImg1.png',
         user:'GodAbeg Yusbi',
         job:'Dato Housing Annex',        
