@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import $ from 'jquery'
 import { React, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import useNavStore from '../customHooks/useNavStore'
 import Logo from './../assets/images/logo/logo.png'
 
 
@@ -15,6 +16,8 @@ const Nav = () => {
   const closeDoor = useRef()
   const openDoor = useRef()
   const [isOpen, setIsOpen] = useState(false)
+  const navOpen = useNavStore(state=> state.isNavOpen)
+  const setNavOpen = useNavStore(state=> state.changeIsNavOpen)
   
   let args = [
     'block',
@@ -41,7 +44,9 @@ const toggleHelper = (el, changes) => {
     toggleHelper(openDoor, args)
     toggleHelper(closeDoor, args)
     setIsOpen((prevIsOpen)=>!prevIsOpen)
+    setNavOpen()
   }
+
 
   const handleOutsideClick = (e) =>{
     if(!(($(e.target).closest('#navItems').length > 0 ) || ($(e.target).closest('#menuBtn').length > 0))){
@@ -76,7 +81,7 @@ const toggleHelper = (el, changes) => {
           <NavLink exact="true" to="/tenants" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Tenants</NavLink>
           <NavLink exact="true" to="/contact" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Contact Us</NavLink>
         </div>
-        <button type='button' id="menuBtn" title='Menu' onClick={handleClick} className='group px-5 flex items-center lg:hidden '>
+        <button type='button' id="menuBtn" title='Menu' onClick={handleClick} className={`group ${isOpen && 'fixed top-10 right-5 z-70'} px-5 flex items-center lg:hidden`}>
           <p className="hidden">Menu</p>
           <FontAwesomeIcon ref={openDoor} icon={faDoorClosed} color='white' className='z-30 block group-hover:hidden'/>
           <FontAwesomeIcon ref={closeDoor} icon={faDoorOpen} color='white' className='z-30 hidden group-hover:block group-hover:text-red1x transition-colors duration-700 ease-in-out'/>

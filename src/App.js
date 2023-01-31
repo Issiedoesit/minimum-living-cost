@@ -6,6 +6,7 @@ import Landlord from './components/Landlord/Landlord';
 import Tenants from './components/Tenants/Tenants';
 import Error from './components/Error';
 import ScrollProgress from './ScrollProgress';
+import useNavStore from './customHooks/useNavStore';
 
 
 
@@ -14,8 +15,11 @@ import ScrollProgress from './ScrollProgress';
 
 
 function App() {
+
+  const navOpen = useNavStore(state=> state.isNavOpen)
+  
   return (
-    <div className="App">
+    <div className={`App ${navOpen && 'overflow-y-hidden max-h-screen' }`}>
       <ScrollProgress />
         <Routes>
           <Route index path="/" element={<Home />}></Route>
