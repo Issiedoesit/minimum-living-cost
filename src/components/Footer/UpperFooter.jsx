@@ -12,7 +12,9 @@ const UpperFooter = () => {
     <section className='flex border-b-0.5 border-b-lightBlue1x flex-col pt-24 pb-20 xl:flex-row xl:items-center'>
     <div className='pb-20 xl:pb-0 xl:px-10 flex items-center xl:w-fiftyPercent'>
         {/* <p className='text-5xl inter-700'>LOGO</p> */}
-        <img src={Logo} alt='logo' className='bg-red1x shadow-md max-w-[200px] shadow-red1x'/>
+        <a href="/">
+            <img src={Logo} alt='logo' className='hover:scale-90 transition-all duration-500 ease-in-out cursor-pointer bg-red1x shadow-md max-w-[200px] shadow-red1x'/>
+        </a>
     </div>
     <div className='xl:w-fiftyPercent space-y-10 text-darkBlue1x'>
         <div className='space-y-6'>
@@ -36,7 +38,7 @@ const UpperFooter = () => {
             <p className='opacity-50 text-sm'>Social Media</p>
             <div className='items-center gap-y-10 sm:gap-y-4 sm:gap-4 grid grid-cols-4 sm:flex sm:flex-row'>
                 {SocialIcon.map((data)=>{
-                    return <a key={data.id} href={data.link} className="col-span-1" >
+                    return <a key={data.id} href={data.link} className="col-span-1 hover:scale-90 transition-all duration-500 ease-in-out" >
                         <img src={data.img} alt={data.id} srcset="" />
                     </a>
                 })}
