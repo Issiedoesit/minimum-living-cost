@@ -72,7 +72,7 @@ const toggleHelper = (el, changes) => {
 
 
   return (
-    <nav className='sticky top-0 left-0 flex flex-row justify-between lg:grid grid-cols-12 pt-5 lg:items-center gap-20 border-b'>
+    <nav className='sticky top-0 left-0 z-70 flex flex-row justify-between lg:grid grid-cols-12 pt-5 lg:items-center gap-20 border-b'>
         <div className='col-span-3 pb-5 max-w-28'>
             <NavLink exact="true" to="/" title="Home">
                 <img src={Logo} alt='logo' className=''/>
