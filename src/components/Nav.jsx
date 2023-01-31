@@ -43,27 +43,23 @@ const toggleHelper = (el, changes) => {
     setIsOpen((prevIsOpen)=>!prevIsOpen)
   }
 
-  // let ho = ''
-  // if(isOpen){
-  //   ho = 'Open'
-  // }else{
-  //   ho = 'Closed'
-  // }
+  const handleOutsideClick = (e) =>{
+    if(!(($(e.target).closest('#navItems').length > 0 ) || ($(e.target).closest('#menuBtn').length > 0))){
+      if(!($('#navItems').hasClass('translate-x-[150%]'))){
+        handleClick()
+      }
+    }
+  }
 
 
   useEffect(() => {
-    document.addEventListener('click', function(e){
-      if(!(($(e.target).closest('#navItems').length > 0 ) || ($(e.target).closest('#menuBtn').length > 0))){
-        if(!($('#navItems').hasClass('translate-x-[150%]'))){
-          handleClick()
-        }
-      }
-    })
+    document.addEventListener('click', handleOutsideClick)
   
-    // return () => {
-    //   window.removeEventListener('click')
-    // }
-  }, [isOpen])
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+
+    }
+  }, [])
   
 
 
