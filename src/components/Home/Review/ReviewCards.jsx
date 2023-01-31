@@ -2,31 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Quotes from './../../../assets/images/quotes.png';
 import { motion, AnimatePresence } from "framer-motion"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesRight, faAnglesLeft, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesRight, faAnglesLeft} from '@fortawesome/free-solid-svg-icons'
 
 
 const ReviewCards = ({id, review, img, user, job, video, poster, currentSlide, setCurrentSlide, slideLength}) => {
-    const [isPlaying, setIsPlaying] = useState(false)
-    const element1 = <FontAwesomeIcon icon={faPlay} color='white' size='xl' title='Play' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
-    const element2 = <FontAwesomeIcon icon={faPause} color='white' size='xl' title='Pause' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
-    let vid = document.querySelector('video')
-    const [direction, setDirection] = useState('')
-
-    const controlVideo = () =>{
-        isPlaying ? vid.pause() : vid.play()
-        setIsPlaying(!isPlaying)
-    }
-
-
-    // issue with video playing when it switches slides
-    // needs to be double clicked
-
-    useEffect(() => {
-        // console.log(isPlaying);
-    }, [isPlaying])
-
+    const [direction, setDirection] = useState(-100)
 
     const moveSlide = (n) => {
+        
+        if(n === 1){
+            setDirection(100)
+        }else{
+            setDirection(-100)
+        }
         setCurrentSlide((prevCurrentSlide) => prevCurrentSlide + n)
     }
 
