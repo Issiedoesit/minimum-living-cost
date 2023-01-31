@@ -6,7 +6,7 @@ const ListSkeleton = () => {
     const theme = useThemeStore(state=>state.theme)
 
   return (
-    <div className='w-ninetyPercent min-w-full sm:w-auto max-w-[350px] mx-auto rounded-26.62px shadow-lg'>
+    <div className='w-ninetyPercent min-w-[90%] sm:min-w-full sm:w-auto max-w-[350px] mx-auto rounded-26.62px shadow-lg'>
         <div className='h-80 w-full min-w-full bg-gray-300 skeleton rounded-t-26.62px'></div>
         <div className={`${theme === 'light' ? 'bg-white text-black' : 'bg-black/40 text-white'} rounded-b-26.62px space-y-5 h-fit w-full min-w-full pt-5`}>
             <div className='px-5'>
