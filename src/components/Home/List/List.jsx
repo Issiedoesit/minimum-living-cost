@@ -6,6 +6,7 @@ import Pagination from './Pagination'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowUp19, faCircleArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
+import useThemeStore from '../../../customHooks/useThemeStore'
 
 
 
@@ -20,6 +21,8 @@ const List = () => {
     const [onScreen, setonScreen] = useState(false)
     const [rows, setRows] = useState(6)
     const listingsRef = useRef()
+    const theme =  useThemeStore(state=>state.theme)
+
 
    useEffect(() => {
     setListLength(ListData.length)
@@ -106,7 +109,7 @@ const List = () => {
    
 
   return (
-    <section id='listings' className='bg-grey1x pt-14 pb-18 px-5 sm:px-10 lg:px-28'>
+    <section id='listings' className={`${theme === 'light' ? 'bg-grey1x text-black' : 'bg-gray-900 text-lightGrey1x'} pt-14 pb-18 px-5 sm:px-10 lg:px-28`}>
         <div className='flex flex-col gap-8 sm:gap-0 sm:flex-row justify-between sm:items-center'>
             <h1 className='inter inter-800 text-2xl sm:text-3xl lg:text-4xl capitalize'><span className='border-b-4 border-red1x'>list  </span>of properties</h1>
             <button onClick={()=>{showAll()}} className='man-r man-r-500 w-fit self-end hover:scale-90 hover:ring hover:ring-red1x hover:ring-offset-2 hover:bg-white hover:text-red1x transition-all ease-in-out duration-500 text-sm sm:text-base bg-red1x py-3 px-4 sm:py-6 sm:px-8 text-white'>{rows === listLength ? 'View Fewer Properties' : 'View All Properties'}</button>

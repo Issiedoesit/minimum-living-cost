@@ -4,6 +4,7 @@ import $ from 'jquery'
 import Alert from '../../../Alert/Alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import useThemeStore from '../../../../customHooks/useThemeStore';
 
 
 
@@ -15,6 +16,7 @@ const Form = () => {
     const [fieldsEmpty, setFieldsEmpty] = useState(false)
     const [imageLength, setImageLength] = useState(0)
     const clearTimerRef = useRef();
+    const theme = useThemeStore(state => state.theme)
    
 
     const nameRef = useRef('')
@@ -134,34 +136,34 @@ const Form = () => {
         <h1 className='inter inter-500 text-center text-lg sm:text-2xl'>
             Your property with us and be Confident that Your Room will be Filled Out!
         </h1>
-        <motion.form id="myForm" variants={formWrap} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className='pt-11 px-5 sm:px-16 pb-14 bg-white shadow-2xl rounded-ten'>
+        <motion.form id="myForm" variants={formWrap} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className={`pt-11 px-5 sm:px-16 pb-14 ${theme === 'light' ? 'bg-white text-black ' : 'bg-slate-900 text-lightGrey1x'} shadow-2xl rounded-ten`}>
             <h1 className='text-red1x poppins poppins-700 text-xl sm:text-3xl text-center'>Add A New Property</h1>
             <section className='flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 pt-8 sm:pt-16 gap-4 sm:gap-10'>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Name</p>
                     <label htmlFor="name" className='relative w-full'>
-                        <input ref={nameRef} required type="text" name="name" id="name" placeholder='Enter Name' className='peer autofill:bg-black focus:outline-red1x w-full border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3'/>
-                        <p className='absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 peer-focus:bg-white peer-focus:text-xs transition-transform duration-500 place-holder'>Enter Name</p>
+                        <input ref={nameRef} required type="text" name="name" id="name" placeholder='Enter Name' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`} />
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Name</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Address</p>
                     <label htmlFor="address" className='relative w-full'>
-                        <input ref={addressRef} required type="text" name="address" id="address" placeholder='Enter Address' className='peer focus:outline-red1x w-full border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3'/>
-                        <p className='absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 peer-focus:bg-white peer-focus:text-xs transition-transform duration-500 place-holder'>Enter Address</p>
+                        <input ref={addressRef} required type="text" name="address" id="address" placeholder='Enter Address' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Address</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Unit Number</p>
                     <label htmlFor="unit" className='relative w-full'>
-                        <input ref={unitRef} required type="text" name="unit" id="unit" placeholder='Enter Unit' className='peer focus:outline-red1x w-full border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3'/>
-                        <p className='absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 peer-focus:bg-white peer-focus:text-xs transition-transform duration-500 place-holder'>Enter Unit</p>
+                        <input ref={unitRef} required type="text" name="unit" id="unit" placeholder='Enter Unit' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Unit</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>City</p>
                     <label htmlFor="city" className='relative w-full'>
-                        <select ref={cityRef} required name="city" id="city" className='peer focus:outline-red1x border border-lightGrey1x h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select ref={cityRef} required name="city" id="city" className={`peer focus:outline-red1x border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm px-5 py-3 w-full min-h-fit`}>
                             <option value="Select City" selected disabled>Select City</option>
                             <option value="Bayview">Bayview</option>
                             <option value="Chinatown">Chinatown</option>
@@ -171,7 +173,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>State</p>
                     <label htmlFor="state" className='relative w-full'>
-                        <select ref={stateRef} required name="state" id="state" className='peer focus:outline-red1x border border-lightGrey1x h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select ref={stateRef} required name="state" id="state" className={`peer focus:outline-red1x border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm px-5 py-3 w-full min-h-fit`}>
                             <option value="Select State" selected disabled>Select State</option>
                             <option value="Bayview">San Francisco</option>
                         </select>
@@ -180,7 +182,7 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select ref={roomOneRef} required name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select ref={roomOneRef} required name="room-type" id="roomType" className={`peer focus:outline-red1x border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm px-5 py-3 w-full min-h-fit`}>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                             <option value="Private">Private</option>
                             <option value="Shared">Shared</option>
@@ -190,14 +192,14 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Price</p>
                     <label htmlFor="price" className='relative w-full'>
-                        <input ref={priceRef} required type="text" name="price" id="price" placeholder='Enter Price' className='peer focus:outline-red1x w-full border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3'/>
-                        <p className='absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 peer-focus:bg-white peer-focus:text-xs transition-transform duration-500 place-holder'>Enter Price</p>
+                        <input ref={priceRef} required type="text" name="price" id="price" placeholder='Enter Price' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Price</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Room Type</p>
                     <label htmlFor="roomType" className='relative w-full'>
-                        <select ref={roomTwoRef} required name="room-type" id="roomType" className='peer focus:outline-red1x border border-lightGrey1x h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3 w-full min-h-fit'>
+                        <select ref={roomTwoRef} required name="room-type" id="roomType" className={`peer focus:outline-red1x border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} h-12 focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm px-5 py-3 w-full min-h-fit`}>
                             <option value="Select Room Type" selected disabled>Select Room Type</option>
                             <option value="Private">Private</option>
                             <option value="Shared">Shared</option>
@@ -207,8 +209,8 @@ const Form = () => {
                 <div className='flex flex-col gap-4 items-start col-span-2 lg:col-span-3'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Description</p>
                     <label htmlFor="desc" className='relative w-full'>
-                        <textarea ref={descRef} required cols="30" rows="6" name="desc" id="desc" placeholder='Enter Description' className='peer focus:outline-red1x resize-none w-full border border-lightGrey1x focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm text-grey4x bg-lightGrey2x px-5 py-3'/>
-                        <p className='absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 peer-focus:bg-white peer-focus:text-xs transition-transform duration-500 place-holder'>Enter Description</p>
+                        <textarea ref={descRef} required cols="30" rows="6" name="desc" id="desc" placeholder='Enter Description' className={`peer focus:outline-red1x resize-none w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Description</p>
                     </label>
                 </div>
                 <div className='col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col gap-4 items-start w-full'>

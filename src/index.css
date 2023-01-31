@@ -97,7 +97,6 @@ body > *{
 }
 
 .flex-form-label{
-  @apply text-black;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }

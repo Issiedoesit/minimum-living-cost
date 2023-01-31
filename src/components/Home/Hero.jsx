@@ -6,6 +6,7 @@ import "./../../../node_modules/leaflet/dist/leaflet.css";
 import SanfranAreas from '../../data/Map/SanFranAreas';
 import $ from 'jquery';
 import { motion } from 'framer-motion';
+import useThemeStore from '../../customHooks/useThemeStore';
 
 
 
@@ -25,6 +26,8 @@ const Hero = () => {
     const [position, setPosition] = useState([37.776667, -122.277778])
     const [nValue, setNValue] = useState('')
     const [area, setArea] = useState('Alameda (Island)')
+    const theme =  useThemeStore(state=>state.theme)
+
 
 
     const handleSelect = () =>{
@@ -72,14 +75,14 @@ const Hero = () => {
     
 
   return (
-    <section className='hero relative'>
-        <div className='z-10 absolute h-full w-full bg-black/30'></div>
+    <section className={`hero relative ${theme === 'light' ? 'text-white' : 'text-white'}`}>
+        <div className={`z-10 absolute h-full w-full  ${theme === 'light' ? 'bg-black/30' : 'bg-black/70'}`}></div>
         <div className='z-20 relative top-0 left-0 px-5 sm:px-10 lg:px-28'>
             <Nav />
         </div>
         <section className='px-5 sm:px-10 lg:px-28 pt-20 pb-40 z-10 relative flex flex-col lg:flex-row gap-10 lg:justify-between lg:items-center h-full'>
             <div className='sm:w-eightyPercent mx-auto lg:mx-0 lg:w-fortyPercent lg:text-left'>
-                <motion.h1 variants={text} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className='inter inter-700 text-white text-2xl sm:text-3xl lg:text-5xl'>The most affordable place to stay in the san franciso bay area</motion.h1>
+                <motion.h1 variants={text} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className={`inter inter-700 ${''} text-2xl sm:text-3xl lg:text-5xl`}>The most affordable place to stay in the san franciso bay area</motion.h1>
             </div>
             <section className='w-full lg:w-sixtyPercent flex lg:justify-end mx-auto lg:mx-0'>
                 <div className='w-full poppins poppins-500 text-sm grid grid-rows-7 gap-8 grid-cols-1 place-items-center'>
@@ -97,11 +100,11 @@ const Hero = () => {
                             <RecenterAutomatically position={position}/>                    
                         </MapContainer>
                     </motion.div>
-                    <motion.div variants={up} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className='flex flex-col sm:flex-row sm:justify-center gap-2 sm:gap-0 px-2 xxs:w-60 xs:w-72 w-80 max-w-sm sm:w-96 sm:px-5 py-4 col-span-1 bg-white border border-black/10 rounded-ten'>
-                        <select name="types" id="types" className='cursor-pointer px-5 py-4 h-14 border border-lightGrey1x bg-lightGrey2x rounded-ten sm:rounded-l-ten sm:rounded-r-none'>
+                    <motion.div variants={up} initial="slideDown" whileInView="slideUp" viewport={{once:true, amount:0}} className={`flex flex-col sm:flex-row sm:justify-center gap-2 sm:gap-0 px-2 xxs:w-60 xs:w-72 w-80 max-w-sm sm:w-96 sm:px-5 py-4 col-span-1 ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-white'} border border-black/10 rounded-ten`}>
+                        <select name="types" id="types" className={`cursor-pointer px-5 py-4 h-14 border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x ' : 'bg-slate-700 border-slate-400'} rounded-ten sm:rounded-l-ten sm:rounded-r-none`}>
                             <option value="All Type" disabled selected>All Type</option>
                         </select>
-                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className='cursor-pointer px-5 h-14 py-4 rounded-ten sm:rounded-none sm:w-44 border border-lightGrey1x bg-lightGrey2x'>
+                        <select id='neighborhood' onChange={(e)=>setNValue(e.target.value)} name="neighborhood" className={`cursor-pointer px-5 h-14 py-4 rounded-ten sm:rounded-none sm:w-44 border ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x ' : 'bg-slate-700 border-slate-400'}`}>
                             {/* <option value="Neighborhood" disabled selected>Neighborhood</option> */}
                             {SanfranAreas.map((areas)=>{
                                return <option value={areas.coordinates}>{areas.name}</option>

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesRight, faAnglesLeft, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 import YouTube from "react-youtube";
+import useThemeStore from '../../../customHooks/useThemeStore'
 
 
 
@@ -15,37 +16,24 @@ const Review = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const element1 = <FontAwesomeIcon icon={faPlay} color='white' size='xl' title='Play' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
     const element2 = <FontAwesomeIcon icon={faPause} color='white' size='xl' title='Pause' className='group-hover:text-black cursor-pointer transition-colors duration-500'/>
-    // let vid = document.getElementById('youtube-video')
     const [player, setPlayer] = useState(null)
+    const theme = useThemeStore(state=>state.theme)
     
-    const onPlayerReady = (event) => {
-        setPlayer(event.target);
-        player.pauseVideo();
-      };
     const onReady = (event) => {
         setPlayer(event.target);
     };
 
-    //   const onPlayerStateChange = (event) => {
-    //     setPlayer(event.target)
-    //     player.playVideo();
-    //   };
-    
-      const options = {
-        height: '100%',
-        width: '100%',
-        playerVars: {
-          autoplay: 0,
-          controls: 1,
-          playbar: 0
-        },
-      };
+    const options = {
+      height: '100%',
+      width: '100%',
+      playerVars: {
+        autoplay: 0,
+        controls: 1,
+        playbar: 0
+      },
+    };
 
     const controlVideo = () =>{
-        // const vid = event.target;
-        // isPlaying ? vid.pauseVideo() : vid.playVideo()
-        // setIsPlaying(!isPlaying)
-        // // console.log(isPlaying);
         if (isPlaying) {
             player.pauseVideo();
           } else {
@@ -68,10 +56,7 @@ const Review = () => {
         dotItems.push(i)
     }
 
-    let allVideos = []
-    ReviewData.map((data)=>{
-        allVideos.push(data.video)
-    })
+   
 
     const ReviewSlice = ReviewData.slice(currentSlide)
 
@@ -83,9 +68,7 @@ const Review = () => {
         review={data.review} 
         img={data.img} 
         user={data.user} 
-        allVideos={allVideos}
         job={data.job} 
-        video={data.video} 
         poster={data.poster} 
         currentSlide={currentSlide} 
         setCurrentSlide={setCurrentSlide} 
@@ -99,7 +82,7 @@ const Review = () => {
 
 
   return (
-    <main className='relative w-full bg-red1x/10 pb-10 xl:pb-0'>
+    <main className={`relative w-full ${theme === 'light' ? 'bg-red1x/10 text-black' : 'bg-red1x/70 text-white'} pb-10 xl:pb-0`}>
       <section className="grid grid-col-1 lg:grid-cols-2 auto-rows-fr auto-cols-fr">
             <section className='flex flex-row w-full mx-auto xl:mx-0 overflow-x-hidden overflow-y-hidden flex-nowrap h-fit' id='slide_wrap'>
                     {reviewDataSet}

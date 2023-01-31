@@ -3,8 +3,11 @@ import CareCards from './CareCards'
 import CareImg from "./../../../assets/images/careImg.png";
 import CareData from './CareData'
 import { motion } from 'framer-motion';
+import useThemeStore from '../../../customHooks/useThemeStore';
 
-const care = () => {
+const Care = () => {
+  const theme =  useThemeStore(state=>state.theme)
+
 
   const cardVariants = {
     offscreen: {
@@ -64,7 +67,7 @@ const care = () => {
         return <CareCards key={data.id} id={data.id} image={data.image} alt={data.alt} title={data.title}/> 
     })
   return (
-    <motion.section variants={cardVariants} initial='offscreen' whileInView="onscreen" viewport={{ once: true, amount: 0 }} transition={{ ease: "easeOut", duration: 2 }}  className='py-28 lg:py-44 px-5 sm:px-10 lg:px-28 space-y-10'>
+    <motion.section variants={cardVariants} initial='offscreen' whileInView="onscreen" viewport={{ once: true, amount: 0 }} transition={{ ease: "easeOut", duration: 2 }}  className={`py-28 lg:py-44 px-5 sm:px-10 lg:px-28 space-y-10 ${theme === 'light' ? 'bg-white text-black' : 'bg-black text-lightGrey1x'}`}>
         <h1 className='inter inter-800 text-2xl sm:text-3xl lg:text-4xl capitalize'><span className='border-b-4 border-red1x'>minimum living cost </span>takes care of everything</h1>
         <motion.section className='flex flex-col-reverse lg:flex-row items-center gap-16'>
             <motion.div variants={item} initial="slideOutRight" whileInView="slideInLeft" viewport={{ once: true, amount: 0 }} >
@@ -76,4 +79,4 @@ const care = () => {
   )
 }
 
-export default care
+export default Care

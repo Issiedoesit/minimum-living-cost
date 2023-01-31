@@ -1,10 +1,12 @@
-import { faDoorClosed, faDoorOpen} from '@fortawesome/free-solid-svg-icons'
+import React, {useEffect, useRef, useState } from 'react'
+import { faBridge, faCircleChevronLeft, faCircleDot, faCircleRadiation, faCloudSun, faCloudSunRain, faDoorClosed, faDoorOpen, faMountainSun } from '@fortawesome/free-solid-svg-icons'
+import { faSun, faMoon} from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import $ from 'jquery'
-import { React, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import useNavStore from '../customHooks/useNavStore'
 import Logo from './../assets/images/logo/logo.png'
+import useThemeStore from '../customHooks/useThemeStore'
 
 
 
@@ -16,8 +18,9 @@ const Nav = () => {
   const closeDoor = useRef()
   const openDoor = useRef()
   const [isOpen, setIsOpen] = useState(false)
-  const navOpen = useNavStore(state=> state.isNavOpen)
   const setNavOpen = useNavStore(state=> state.changeIsNavOpen)
+ const theme =  useThemeStore(state=>state.theme)
+ const changeTheme =  useThemeStore(state=>state.changeTheme)
   
   let args = [
     'block',
@@ -75,11 +78,21 @@ const toggleHelper = (el, changes) => {
                 <img src={Logo} alt='logo' className=''/>
             </NavLink>
         </div>
-        <div ref={NavRef} id="navItems" className='fixed h-screen text-center overflow-y-auto lg:overflow-y-hidden lg:text-left top-0 right-0 py-24 lg:py-0 px-20 lg:px-0 lg:static bg-black lg:bg-transparent z-20 flex flex-col translate-x-[150%] lg:translate-x-0 transition-transform duration-700 lg:flex-row lg:h-full lg:items-center gap-10 col-span-9'>
-          <NavLink end={true} exact="true" to="/" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Home</NavLink>
-          <NavLink exact="true" to="/landlord" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Landlord</NavLink>
-          <NavLink exact="true" to="/tenants" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Tenants</NavLink>
-          <NavLink exact="true" to="/contact" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Contact Us</NavLink>
+        <div ref={NavRef} id="navItems" className='fixed h-screen text-center overflow-y-auto lg:overflow-y-hidden lg:text-left top-0 right-0 py-24 lg:py-0 px-20 lg:px-0 lg:static bg-black lg:bg-transparent z-20 flex flex-col translate-x-[150%] lg:translate-x-0 transition-transform duration-700 lg:flex-row lg:h-full lg:items-center justify-between col-span-9'>
+          <div className='flex flex-col lg:flex-row items-center gap-10'>
+            <NavLink end={true} exact="true" to="/" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Home</NavLink>
+            <NavLink exact="true" to="/landlord" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Landlord</NavLink>
+            <NavLink exact="true" to="/tenants" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Tenants</NavLink>
+            <NavLink exact="true" to="/contact" className={({isActive})=>(isActive ? "text-white border-b-2 px-3 h-fit lg:h-full flex items-center dm dm-500 text-lg" : "text-white dm dm-400 hover:text-red1x transition-colors duration-500")}>Contact Us</NavLink>
+          </div>
+          <div className={`flex items-center rounded-ten w-fit h-fit border ${theme === 'light' ? 'border-white' : 'border-slate-600'}`}>
+          <button onClick={()=>{changeTheme('light')}} className={`py-2 px-4 rounded-l-ten ${theme === 'light' ? 'bg-white/80' : ''}`}>
+            <FontAwesomeIcon ref={openDoor} icon={faSun} color={`${theme === 'light'? '#F4511E' : 'white'}`} className='z-30 block group-hover:hidden'/>
+          </button>
+          <button onClick={()=>{changeTheme('dark')}} className={`py-2 px-4 rounded-r-ten ${theme === 'light' ? '' : 'bg-slate-600'}`}>
+            <FontAwesomeIcon ref={openDoor} icon={faMoon} color={`${theme === 'light'? 'white' : '#F4511E'}`} className='z-30 block group-hover:hidden'/>
+          </button>
+          </div>  
         </div>
         <button type='button' id="menuBtn" title='Menu' onClick={handleClick} className={`group ${isOpen && 'fixed top-10 right-5 z-70'} px-5 flex items-center lg:hidden`}>
           <p className="hidden">Menu</p>

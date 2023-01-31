@@ -1,6 +1,9 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
+import useThemeStore from '../../../customHooks/useThemeStore'
+
 
 function Pagination({itemLength, rows, currentPage, paginate}){
+    const theme = useThemeStore(state => state.theme)
     const pageNumbers = []
     for (let i = 1; i < Math.ceil(itemLength/rows)+1; i++) {
         pageNumbers.push(i)
@@ -8,6 +11,12 @@ function Pagination({itemLength, rows, currentPage, paginate}){
 
     let totalPages = Math.ceil(itemLength/rows)
 
+    // useEffect(() => {
+    //     if(page === currentPage){
+    //         setThemeColors('text-red1x page-nav flex items-center bg-white')
+    //     }
+    // }, [theme, page, currentPage])
+    
     
     // if(currentPage === 1){
     //     document.querySelectorAll('.page-nav')[0].classList.add('active-nav')
@@ -28,11 +37,11 @@ function Pagination({itemLength, rows, currentPage, paginate}){
             </div>
             <div id='page_wrap' className='flex flex-row h-full divide-x divide-grey3x'>
                 {pageNumbers.map((page)=>{
-                    return <button type='button' title={`Page ${page}`} id={`btn`+page} key={`btn`+page} onClick={()=> paginate(page)} className={`page-nav ${page === currentPage ? "active-page text-red1x page-nav flex items-center bg-white px-4" : "text-red1x page-nav flex items-center bg-white px-4 hover:bg-red1x/80 ease-in-out hover:text-white transition-colors duration-500"}  `}>{page}</button>
+                    return <button type='button' title={`Page ${page}`} id={`btn`+page} key={`btn`+page} onClick={()=> paginate(page)} className={`page-nav ${theme === 'light' ? 'bg-white ' : 'bg-black/40'} ${page === currentPage ? "active-page text-red1x page-nav flex items-center bg-white px-4" : "text-red1x page-nav flex items-center bg-white px-4 hover:bg-red1x/80 ease-in-out hover:text-white transition-colors duration-500"}  `}>{page}</button>
                 })}
             </div>
             <div className='h-full flex rounded-r-eight'>
-                <button title={`${currentPage == totalPages ? 'You\'re on the Last Page' : `Go to Page ${currentPage+1}`}`} className={`px-6 text-red1x bg-white rounded-r-eight ease-in-out transition-colors duration-500 ${currentPage == totalPages ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-red1x/80 hover:text-white'}`} type='button' id='next' onClick={currentPage == totalPages ? null : NextPage}>Next</button>
+                <button title={`${currentPage == totalPages ? 'You\'re on the Last Page' : `Go to Page ${currentPage+1}`}`} className={`px-6 text-red1x bg-white rounded-r-eight ease-in-out transition-colors duration-500 ${theme === 'light' ? 'bg-white ' : 'bg-black/60'} ${currentPage == totalPages ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-red1x/80 hover:text-white'}`} type='button' id='next' onClick={currentPage == totalPages ? null : NextPage}>Next</button>
             </div>
         </div>
     </div>

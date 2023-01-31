@@ -1,10 +1,13 @@
 import React from 'react'
+import useThemeStore from '../../../customHooks/useThemeStore'
 import FlexImages from './FlexImages'
 import Form from './Form/Form'
 
-const flex = () => {
+const Flex = () => {
+    const theme = useThemeStore(state => state.theme)
+
   return (
-    <main className='px-5 sm:px-10 lg:px-28 py-28 space-y-28'>
+    <main className={`px-5 sm:px-10 lg:px-28 py-28 space-y-28 ${theme === 'light' ? 'bg-white text-black ' : 'bg-black text-lightGrey1x'}`}>
         <section className='flex flex-col lg:flex-row items-center gap-16'>
             <div className='lg:w-fiftyPercent'>
                 <FlexImages />
@@ -22,4 +25,4 @@ const flex = () => {
   )
 }
 
-export default flex
+export default Flex

@@ -4,10 +4,13 @@ import pin from './../../assets/images/icons/round/round-place-24px.svg'
 import phone from './../../assets/images/icons/round/round-phone-24px.svg'
 import fax from './../../assets/images/icons/round/round-local-printshop-24px.svg'
 import Logo from '../../assets/images/logo/logo.png'
+import useThemeStore from '../../customHooks/useThemeStore'
 
 
 
 const UpperFooter = () => {
+    const theme = useThemeStore(state=>state.theme)
+
   return (
     <section className='flex border-b-0.5 border-b-lightBlue1x flex-col pt-24 pb-20 xl:flex-row xl:items-center'>
     <div className='pb-20 xl:pb-0 xl:px-10 flex items-center xl:w-fiftyPercent'>
@@ -16,7 +19,7 @@ const UpperFooter = () => {
             <img src={Logo} alt='logo' className='hover:scale-90 transition-all duration-500 ease-in-out cursor-pointer bg-red1x shadow-md max-w-[200px] shadow-red1x'/>
         </a>
     </div>
-    <div className='xl:w-fiftyPercent space-y-10 text-darkBlue1x'>
+    <div className={`xl:w-fiftyPercent space-y-10 ${theme === 'light' ? 'text-darkBlue1x' : 'text-white'}`}>
         <div className='space-y-6'>
             <a href="#" className='w-full flex items-center gap-3'>
                 <img src={pin} alt='location' srcset="" />

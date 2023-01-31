@@ -7,6 +7,7 @@ import Tenants from './components/Tenants/Tenants';
 import Error from './components/Error';
 import ScrollProgress from './ScrollProgress';
 import useNavStore from './customHooks/useNavStore';
+import useThemeStore from './customHooks/useThemeStore';
 
 
 
@@ -17,9 +18,13 @@ import useNavStore from './customHooks/useNavStore';
 function App() {
 
   const navOpen = useNavStore(state=> state.isNavOpen)
+
+  const theme =  useThemeStore(state=>state.theme)
+
+
   
   return (
-    <div className={`App ${navOpen && 'overflow-y-hidden max-h-screen' }`}>
+    <div className={`App ${navOpen && 'overflow-y-hidden max-h-screen'} ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <ScrollProgress />
         <Routes>
           <Route index path="/" element={<Home />}></Route>
