@@ -103,7 +103,7 @@ body > *{
 }
 
 .hero{
-  background: url('./assets/images/hero.png');
+  background: url('https://res.cloudinary.com/issie/image/upload/v1675096429/Coding-challenges/MLC/hero_dn4kwp.png');
 
   /* with no parallax scrolling */
   /* min-height: 100vh;
