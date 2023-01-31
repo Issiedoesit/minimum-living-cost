@@ -24,7 +24,7 @@ const RecenterAutomatically = ({position}) => {
 
 const Hero = () => {
     const [position, setPosition] = useState([37.776667, -122.277778])
-    const [nValue, setNValue] = useState('')
+    const [nValue, setNValue] = useState('37.776667, -122.277778')
     const [area, setArea] = useState('Alameda (Island)')
     const theme =  useThemeStore(state=>state.theme)
 
