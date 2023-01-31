@@ -143,21 +143,21 @@ const Form = () => {
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Name</p>
                     <label htmlFor="name" className='relative w-full'>
                         <input ref={nameRef} required type="text" name="name" id="name" placeholder='Enter Name' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`} />
-                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Name</p>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-0.5 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Name</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Address</p>
                     <label htmlFor="address" className='relative w-full'>
                         <input ref={addressRef} required type="text" name="address" id="address" placeholder='Enter Address' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
-                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Address</p>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-0.5 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Address</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Unit Number</p>
                     <label htmlFor="unit" className='relative w-full'>
                         <input ref={unitRef} required type="text" name="unit" id="unit" placeholder='Enter Unit' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
-                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Unit</p>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-0.5 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Unit</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
@@ -193,7 +193,7 @@ const Form = () => {
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Price</p>
                     <label htmlFor="price" className='relative w-full'>
                         <input ref={priceRef} required type="text" name="price" id="price" placeholder='Enter Price' className={`peer autofill:bg-black focus:outline-red1x w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
-                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Price</p>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-0.5 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Price</p>
                     </label>
                 </div>
                 <div className='flex flex-col gap-4 items-start col-span-1'>
@@ -210,7 +210,7 @@ const Form = () => {
                     <p  className='flex-form-label after:content-["*"] after:ml-0.5 after:text-red1x'>Description</p>
                     <label htmlFor="desc" className='relative w-full'>
                         <textarea ref={descRef} required cols="30" rows="6" name="desc" id="desc" placeholder='Enter Description' className={`peer focus:outline-red1x resize-none w-full border focus-within:placeholder:text-transparent rounded-five inter inter-400 text-sm ${theme === 'light' ? 'bg-lightGrey2x border-lightGrey1x text-grey4x' : 'bg-slate-700 border-slate-400 text-lightGrey4x'} px-5 py-3`}/>
-                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-1 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Description</p>
+                        <p className={`absolute top-fiftyPercent left-5 -translate-y-fiftyPercent text-sm text-transparent peer-focus:text-red1x peer-focus:top-0 px-2 py-0.5 ${theme === 'light' ? 'peer-focus:bg-white  ' : 'peer-focus:bg-slate-900'} peer-focus:text-xs transition-transform duration-500 place-holder`}>Enter Description</p>
                     </label>
                 </div>
                 <div className='col-span-1 sm:col-span-2 lg:col-span-3 flex flex-col gap-4 items-start w-full'>
